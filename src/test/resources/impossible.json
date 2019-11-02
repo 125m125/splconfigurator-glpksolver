@@ -1,0 +1,1 @@
+{"tree":{"name":"impossible","children":[{"type":"exclusive","features":[{"name":"exclusive1","children":[]},{"name":"exclusive2","children":[]}]}]},"crossTreeConstraints":[{"type":"require","features":["exclusive1","exclusive2"]},{"type":"require","features":["exclusive2","exclusive1"]}]}

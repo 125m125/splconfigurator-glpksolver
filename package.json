@@ -1,0 +1,76 @@
+{
+    "name": "splconfigurator-glpksolver",
+    "version": "0.0.1",
+    "main": "target/splconfigurator.cjs.js",
+    "module": "target/splconfigurator.es.js",
+    "jsnext:main": "target/splconfigurator.es.js",
+    "description": "",
+    "scripts": {
+        "prepare": "rollup -c",
+        "test": "ava --verbose",
+        "coverage": "nyc --reporter=lcov --reporter=text ava",
+        "codecov": "codecov",
+        "checkstyle": "eslint \"src/**/js/**/*.js\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/125m125/splconfigurator-glpksolver.git"
+    },
+    "directories": {
+        "test": "test"
+    },
+    "author": "125m125",
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/125m125/splconfigurator-glpksolver/issues"
+    },
+    "dependencies": {
+        "glpk.js": "3.0.0",
+        "splconfigurator": "1.0.1"
+    },
+    "devDependencies": {
+        "@babel/core": "7.6.4",
+        "@babel/preset-env": "7.6.3",
+        "@babel/register": "7.6.2",
+        "ava": "2.4.0",
+        "babel-plugin-istanbul": "5.2.0",
+        "eslint": "6.6.0",
+        "eslint-config-google": "0.14.0",
+        "nyc": "14.1.1",
+        "rollup": "1.26.2"
+    },
+    "ava": {
+        "files": [
+            "src/test/js/**/*Test.js"
+        ],
+        "require": [
+            "@babel/register"
+        ]
+    },
+    "babel": {
+        "presets": [
+            "@babel/preset-env"
+        ],
+        "plugins": [
+            [
+                "istanbul",
+                {
+                    "exclude": [
+                        "**/*.spec.js"
+                    ]
+                }
+            ]
+        ]
+    },
+    "nyc": {
+        "include": [
+            "src/main/js/*.js"
+        ],
+        "require": [
+            "@babel/register"
+        ],
+        "sourceMap": false,
+        "instrument": false
+    },
+    "homepage": "https://github.com/125m125/splconfigurator-glpksolver#readme"
+}

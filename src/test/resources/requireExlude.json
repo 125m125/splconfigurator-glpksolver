@@ -1,0 +1,15 @@
+{
+    "name": "core",
+    "children": [{
+        "type": "optional",
+        "features": [{
+            "name": "a",
+            "require": ["b"],
+            "exclude": ["c"]
+        }, {
+            "name": "b"
+        }, {
+            "name": "c"
+        }]
+    }]
+}

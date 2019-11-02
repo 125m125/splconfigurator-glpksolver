@@ -1,0 +1,1 @@
+{"tree":{"name":"trap","children":[{"type":"optional","features":[{"name":"bait","children":[{"type":"exclusive","features":[{"name":"impossible1","children":[]},{"name":"impossible2","children":[]}]}]}]}]},"crossTreeConstraints":[{"type":"require","features":["impossible1","impossible2"]},{"type":"require","features":["impossible2","impossible1"]}]}

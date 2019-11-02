@@ -1,0 +1,30 @@
+{
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 2015
+    },
+    "env": {
+        "node": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "google"
+    ],
+    "rules": {
+        "require-jsdoc": [
+            "off"
+        ],
+        "max-len": [
+            "error",
+            {
+                "code": 100,
+                "tabWidth": 2,
+                "ignoreUrls": true,
+                "ignorePattern": "^import"
+            }
+        ]
+    },
+    "globals": {
+        "Promise": true
+    }
+}
