@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+- node
+env:
+  matrix:
+  - TEST_SUITE=test
+  - TEST_SUITE=checkstyle
+  global:
+    secure: cncxdruRf9Rz9PSPTo9y4Mt0OOJus61ZZQwOyRQ+a1oYOje+igx/uRGj6yjvY0srVMfBxuNgiOoAwW48lmCqCmwCfbRluGxcoAwThG+m6fHiqW3ZiO5QL5VY+37fAJU0tsGx2lZ1FZGfpERdpmD6kWEoc3aahNPX/RQ0v06IK81XI6SpYqdsMVD5e4TGjCVM6+f/DrgGvpv4hKPahOSxnBk87K7Danbih3dlDs1TAq6mkSfjh6flc38Dfb6I1aKrRFvahYW35bRu74ikdXjKTmg16TFkX1aasW6FvzPWwfXhZbGfEZYT0QIUmJq2wkkH9KNqWiuqTaYwWtnediQaeqr1zkJ502hhfd9vQblgSghGisR1ELj9WMXkKSItbPpqiHyc+QcqwLlVFFo2IsZWYap86baVK4D6k7E2QBHsAoFEKNH0jIsSOTKMI59cAfxg/O1+6oeGyY4uPRihLQUOKlzOnHVwm/nxmob/DfFVxDixV50X8NJN1ylNUeh2z6bOMDmVmqU09h72WKD8X6SfCucQdAKBZ3RKN1tbj5tVm3yvCretQBC1pi25x7+HDN9KsGSWQ48mYC6c2BV6V3enB+FYpjFnZNeNydfhWYYNWJFGUM+T7cy037B9wIQuHLlTCTBOibLZhhkur1/gsz/CsH8LubUIsd5Q0qqzoBLIUr8=
+install:
+- npm install
+- npm install -g codecov
+script:
+- if [ "$TEST_SUITE" == "test" ]; then npm run coverage && codecov; fi
+- if [ "$TEST_SUITE" == "checkstyle" ]; then npm run checkstyle; fi
