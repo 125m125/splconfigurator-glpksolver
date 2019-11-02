@@ -8,7 +8,9 @@ import GlpkConfigurator from '../../main/js/GlpkConfigurator';
 
 import complex1 from '../resources/complex1.json';
 import complex1Positive from '../resources/complex1Positive.json';
+import complex1PosPre from '../resources/complex1PosPre.json';
 import complex1Negative from '../resources/complex1Negative.json';
+import complex1NegPre from '../resources/complex1NegPre.json';
 import trap from '../resources/trap.json';
 import trapSolution from '../resources/trapSolution.json';
 import impossible from '../resources/impossible.json';
@@ -92,6 +94,29 @@ test('GlpkConfigurator fails impossible negative', (t) => {
     t.is(model.selectionOf('impossible'), undefined, 'root should not be selected');
   });
 });
+
+test('GlpkConfigurator resprects preselected features positive', (t) => {
+  const model = loadModel(complex1);
+  model.selectFeatureNegative('exclusive1');
+  const uut = new GlpkConfigurator(model, true);
+
+  return uut.solve().then((result) => {
+    t.true(result.success);
+    t.deepEqual(getConfigFromModel(model), complex1PosPre, 'selections should be equivalent');
+  });
+});
+
+test('GlpkConfigurator resprects preselected features negative', (t) => {
+  const model = loadModel(complex1);
+  model.selectFeaturePositive('optional1');
+  const uut = new GlpkConfigurator(model, false);
+
+  return uut.solve().then((result) => {
+    t.true(result.success);
+    t.deepEqual(getConfigFromModel(model), complex1NegPre, 'selections should be equivalent');
+  });
+});
+
 
 test.skip('GlpkConfigurator respects featurelist', (t) => {
   const model = loadModel(complex1);

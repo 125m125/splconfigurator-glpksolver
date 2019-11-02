@@ -48,6 +48,11 @@ function addFeature(feature, glpkModel, parentConstraints) {
     const masterConstraint = glpkModel.addConstraint('master', 1, 1);
     masterConstraint.addVariable(feature.name);
   }
+  if (typeof feature.selection !== 'undefined') {
+    const forcedValue = feature.selection ? 1 : 0;
+    const constraint = glpkModel.addConstraint('forced'+feature.name, forcedValue, forcedValue);
+    constraint.addVariable(feature.name);
+  }
   feature.children.forEach((cg) => {
     const childConstraints = [];
     if (cg instanceof ExclusiveChildGroup) {
